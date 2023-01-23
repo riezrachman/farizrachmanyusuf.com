@@ -51,11 +51,10 @@ function ExperienceContent({
 }: ExperienceContentProps) {
   return (
     <Tab.Panel>
-      <div className="flex gap-1 text-xl font-semibold mb-2">
+      <div className="flex flex-col lg:flex-row gap-0 lg:gap-1 text-xl font-semibold mb-2">
         <div className="font-light">{position}</div>
-        <div>{" @ "}</div>
-        <Link href="/" className="underline">
-          {company}
+        <Link href="/" className="">
+          @ {company}
         </Link>
       </div>
       <div className="flex gap-1 mb-4 text-sm">
@@ -98,17 +97,20 @@ export default function Experience() {
   const docs = snapshot?.docs.sort(compare);
 
   return (
-    <div id="Experience" className="flex flex-col items-center p-24 mx-60">
+    <div
+      id="Experience"
+      className="flex flex-col items-center p-8 lg:p-24 mx-0 lg:mx-60"
+    >
       <div className="flex items-center justify-start w-full text-3xl pb-8 font-semibold after:relative after:content-[''] after:w-[350px] after:h-[1px] after:ml-[20px] after:bg-zinc-900">
         Where I&apos;ve Worked
       </div>
-      <div className="grid grid-cols-3 gap-4 w-full">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 w-full">
         <Tab.Group
           vertical={true}
           selectedIndex={selectedIndex}
           onChange={setSelectedIndex}
         >
-          <Tab.List className="flex flex-col">
+          <Tab.List className="flex lg:flex-col w-full overflow-scroll lg:overflow-auto whitespace-nowrap lg:whitespace-normal">
             {docs?.map((doc) => (
               <ExperienceTab key={doc.id} label={doc.data().company} />
             ))}

@@ -17,7 +17,7 @@ export default function NavBar() {
       >
         {({ open }) => (
           <>
-            <div className="mx-[50px] max-w-full px-2">
+            <div className="mx-8 lg:mx-[50px] max-w-none lg:max-w-full px-0 lg:px-2">
               <div className="relative flex h-16 justify-between">
                 <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                   <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-zinc-500">
@@ -30,7 +30,7 @@ export default function NavBar() {
                   </Disclosure.Button>
                 </div>
                 <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-                  <div className="flex flex-shrink-0 items-center">
+                  <div className="lg:flex flex-shrink-0 items-center hidden">
                     <Image
                       className="block h-16 w-16 lg:hidden"
                       src={

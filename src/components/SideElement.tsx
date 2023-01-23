@@ -3,7 +3,7 @@ import { GitHub, Instagram, Linkedin, Twitter } from "react-feather";
 
 function Left() {
   return (
-    <div className="w-[40px] fixed bottom-0 left-[40px] right-auto z-10">
+    <div className="w-[40px] fixed bottom-0 left-[40px] right-auto z-10 hidden lg:block">
       <ul className="flex flex-col items-center list-none after:content-[''] after:w-[1px] after:h-[90px] after:my-0 after:mx-auto after:bg-zinc-900">
         <li className="m-4">
           <Link href="https://github.com/riezrachman" target="_blank">
@@ -48,7 +48,7 @@ function Left() {
 
 function Right() {
   return (
-    <div className="w-[40px] fixed bottom-0 left-auto right-[40px] z-10">
+    <div className="w-[40px] fixed bottom-0 left-auto right-[40px] z-10 hidden lg:block">
       <ul className="flex flex-col items-center list-none after:content-[''] after:w-[1px] after:h-[90px] after:my-0 after:mx-auto after:bg-zinc-900">
         <li className="m-8 mb-32 rotate-90">
           <Link href="mailto:farizrachmanyusuf@gmail.com">

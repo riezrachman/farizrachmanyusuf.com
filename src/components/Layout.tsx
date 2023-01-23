@@ -20,7 +20,7 @@ export default function Layout({ children }: LayoutProps) {
         <Components.NavBar />
         <Components.SideElement.Left />
         <Components.SideElement.Right />
-        <div id="content" className="mx-[150px] min-h-full">
+        <div id="content" className="lg:mx-[150px] min-h-full">
           {children}
         </div>
       </main>
