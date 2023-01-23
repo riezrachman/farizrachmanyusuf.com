@@ -43,27 +43,15 @@ export function Mobile() {
   );
 
   return (
-    <Transition
-      show={!loading}
-      enter="transition ease-in-out duration-300 transform"
-      enterFrom="-translate-x-full"
-      enterTo="translate-x-0"
-      leave="transition ease-in-out duration-300 transform"
-      leaveFrom="translate-x-0"
-      leaveTo="-translate-x-full"
-    >
-      <Disclosure.Panel className="sm:hidden">
-        <div className="space-y-1 pt-2 pb-4">
-          {snapshot?.docs.map((doc) => (
-            <Components.NavBarMenuItem.Mobile
-              key={doc.id}
-              href={doc.data().href}
-              label={doc.data().label}
-            />
-          ))}
-        </div>
-      </Disclosure.Panel>
-    </Transition>
+    <Disclosure.Panel className="sm:hidden">
+      {snapshot?.docs.map((doc) => (
+        <Components.NavBarMenuItem.Mobile
+          key={doc.id}
+          href={doc.data().href}
+          label={doc.data().label}
+        />
+      ))}
+    </Disclosure.Panel>
   );
 }
 
