@@ -21,7 +21,7 @@ function ExperienceTab({ label }: ExperienceTabProps) {
       {({ selected }) => (
         <button
           className={clsx(
-            "p-4 border-l-2 hover:bg-zinc-100/50 hover:border-zinc-900 hover:text-zinc-900 focus:outline-none focus:ring-0 duration-300",
+            "p-4 border-b-2 lg:border-b-0 lg:border-l-2 hover:bg-zinc-100/50 hover:border-zinc-900 hover:text-zinc-900 focus:outline-none focus:ring-0 duration-300",
             selected
               ? "bg-zinc-100/50 border-zinc-900 text-zinc-900"
               : "border-transparent text-zinc-400"
@@ -97,10 +97,7 @@ export default function Experience() {
   const docs = snapshot?.docs.sort(compare);
 
   return (
-    <div
-      id="Experience"
-      className="flex flex-col items-center p-8 lg:p-24 mx-0 lg:mx-60"
-    >
+    <div id="Experience" className="flex flex-col items-center p-8 lg:p-24">
       <div className="flex items-center justify-start w-full text-3xl pb-8 font-semibold after:relative after:content-[''] after:w-[350px] after:h-[1px] after:ml-[20px] after:bg-zinc-900">
         Where I&apos;ve Worked
       </div>
@@ -110,13 +107,13 @@ export default function Experience() {
           selectedIndex={selectedIndex}
           onChange={setSelectedIndex}
         >
-          <Tab.List className="flex lg:flex-col w-full overflow-scroll lg:overflow-auto whitespace-nowrap lg:whitespace-normal">
+          <Tab.List className="flex lg:flex-col w-full overflow-scroll lg:overflow-hidden whitespace-nowrap lg:whitespace-normal">
             {docs?.map((doc) => (
               <ExperienceTab key={doc.id} label={doc.data().company} />
             ))}
           </Tab.List>
-          <Tab.Panels className="col-span-2">
-            {docs?.map((doc, index) => (
+          <Tab.Panels className="col-span-1 lg:col-span-2">
+            {docs?.map((doc) => (
               <ExperienceContent
                 key={doc.id}
                 company={doc.data().company}

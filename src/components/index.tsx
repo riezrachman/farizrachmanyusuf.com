@@ -2,6 +2,7 @@ import About from "./About";
 import Button from "./Button";
 import Contact from "./Contact";
 import Experience from "./Experience";
+import Footer from "./Footer";
 import Introduction from "./Introduction";
 import Layout from "./Layout";
 import NavBar from "./NavBar";
@@ -17,6 +18,7 @@ export default {
   Button,
   Contact,
   Experience,
+  Footer,
   Introduction,
   Layout,
   NavBar,

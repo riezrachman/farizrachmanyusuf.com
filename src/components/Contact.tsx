@@ -4,7 +4,7 @@ export default function Contact() {
   return (
     <div
       id="Contact"
-      className="flex flex-col items-center pb-[300px] lg:pb-24 p-8 lg:p-24 mx-0 lg:mx-24"
+      className="flex flex-col items-center p-8 lg:p-24 mx-0 lg:mx-24"
     >
       <div className="flex items-center text-3xl pb-4 font-semibold">
         Get In Touch

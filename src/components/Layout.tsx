@@ -23,6 +23,7 @@ export default function Layout({ children }: LayoutProps) {
         <div id="content" className="lg:mx-[150px] min-h-full">
           {children}
         </div>
+        <Components.Footer />
       </main>
     </>
   );

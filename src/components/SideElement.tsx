@@ -1,9 +1,29 @@
+import Hooks from "@/hooks";
+import clsx from "clsx";
 import Link from "next/link";
+import React from "react";
 import { GitHub, Instagram, Linkedin, Twitter } from "react-feather";
 
 function Left() {
+  const [isBottom, setIsBottom] = React.useState(false);
+
+  const scroll = Hooks.useScrollListener();
+
+  React.useEffect(() => {
+    if (!isBottom && window.scrollY > 1700) {
+      setIsBottom(true);
+    } else if (isBottom && window.scrollY <= 1700) {
+      setIsBottom(false);
+    }
+  }, [scroll.y, isBottom]);
+
   return (
-    <div className="w-[40px] fixed bottom-0 left-[40px] right-auto z-10 hidden lg:block">
+    <div
+      className={clsx(
+        "w-[40px] fixed bottom-0 left-[40px] right-auto z-10 hidden lg:block",
+        isBottom ? "!hidden" : ""
+      )}
+    >
       <ul className="flex flex-col items-center list-none after:content-[''] after:w-[1px] after:h-[90px] after:my-0 after:mx-auto after:bg-zinc-900">
         <li className="m-4">
           <Link href="https://github.com/riezrachman" target="_blank">
@@ -33,7 +53,7 @@ function Left() {
           </Link>
         </li>
         <li className="m-4 mb-8">
-          <Link href="https://linkedin.com/in/riezrachman/" target="_blank">
+          <Link href="https://linkedin.com/in/riezrachman" target="_blank">
             <Linkedin
               color="currentColor"
               size={18}
@@ -47,8 +67,25 @@ function Left() {
 }
 
 function Right() {
+  const [isBottom, setIsBottom] = React.useState(false);
+
+  const scroll = Hooks.useScrollListener();
+
+  React.useEffect(() => {
+    if (!isBottom && window.scrollY > 1700) {
+      setIsBottom(true);
+    } else if (isBottom && window.scrollY <= 1700) {
+      setIsBottom(false);
+    }
+  }, [scroll.y, isBottom]);
+
   return (
-    <div className="w-[40px] fixed bottom-0 left-auto right-[40px] z-10 hidden lg:block">
+    <div
+      className={clsx(
+        "w-[40px] fixed bottom-0 left-auto right-[40px] z-10 hidden lg:block",
+        isBottom ? "!hidden" : ""
+      )}
+    >
       <ul className="flex flex-col items-center list-none after:content-[''] after:w-[1px] after:h-[90px] after:my-0 after:mx-auto after:bg-zinc-900">
         <li className="m-8 mb-32 rotate-90">
           <Link href="mailto:farizrachmanyusuf@gmail.com">
