@@ -1,42 +1,62 @@
+import { MouseContext } from "@/context/mouse-context";
 import Link from "next/link";
+import React from "react";
 import { GitHub, Instagram, Linkedin, Twitter } from "react-feather";
 
 export default function Footer() {
+  const { cursorType, cursorChangeHandler } = React.useContext(MouseContext);
+
   return (
     <footer className="bg-white">
       <div className="mx-auto max-w-7xl py-12 px-6 md:flex md:items-center md:justify-between lg:px-8">
         <div className="flex justify-center space-x-6 md:order-2">
           <Link
             href="https://github.com/riezrachman"
-            className="text-zinc-400 hover:text-zinc-500"
             target="_blank"
+            onMouseEnter={() => cursorChangeHandler("hovered")}
+            onMouseLeave={() => cursorChangeHandler("")}
           >
             <span className="sr-only"></span>
-            <GitHub className="h-6 w-6" aria-hidden="true" />
+            <GitHub
+              className="text-zinc-400 hover:text-zinc-900 transition ease-in-out hover:-translate-y-1 hover:scale-110 duration-300 h-6 w-6"
+              aria-hidden="true"
+            />
           </Link>
           <Link
             href="https://instagram.com/riezrachman"
-            className="text-zinc-400 hover:text-zinc-500"
             target="_blank"
+            onMouseEnter={() => cursorChangeHandler("hovered")}
+            onMouseLeave={() => cursorChangeHandler("")}
           >
             <span className="sr-only"></span>
-            <Instagram className="h-6 w-6" aria-hidden="true" />
+            <Instagram
+              className="text-zinc-400 hover:text-zinc-900 transition ease-in-out hover:-translate-y-1 hover:scale-110 duration-300 h-6 w-6"
+              aria-hidden="true"
+            />
           </Link>
           <Link
             href="https://twitter.com/riezrachman"
-            className="text-zinc-400 hover:text-zinc-500"
             target="_blank"
+            onMouseEnter={() => cursorChangeHandler("hovered")}
+            onMouseLeave={() => cursorChangeHandler("")}
           >
             <span className="sr-only"></span>
-            <Twitter className="h-6 w-6" aria-hidden="true" />
+            <Twitter
+              className="text-zinc-400 hover:text-zinc-900 transition ease-in-out hover:-translate-y-1 hover:scale-110 duration-300 h-6 w-6"
+              aria-hidden="true"
+            />
           </Link>
           <Link
             href="https://linkedin.com/in/riezrachman"
-            className="text-zinc-400 hover:text-zinc-500"
             target="_blank"
+            onMouseEnter={() => cursorChangeHandler("hovered")}
+            onMouseLeave={() => cursorChangeHandler("")}
           >
             <span className="sr-only"></span>
-            <Linkedin className="h-6 w-6" aria-hidden="true" />
+            <Linkedin
+              className="text-zinc-400 hover:text-zinc-900 transition ease-in-out hover:-translate-y-1 hover:scale-110 duration-300 h-6 w-6"
+              aria-hidden="true"
+            />
           </Link>
         </div>
         <div className="mt-8 md:order-1 md:mt-0">

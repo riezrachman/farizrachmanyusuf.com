@@ -36,7 +36,7 @@ function Left() {
             <GitHub
               color="currentColor"
               size={18}
-              className="text-zinc-400 hover:text-zinc-900 hover:mb-1 transform duration-300"
+              className="text-zinc-400 hover:text-zinc-900 transition ease-in-out hover:-translate-y-1 hover:scale-110 duration-300"
             />
           </Link>
         </li>
@@ -49,7 +49,7 @@ function Left() {
             <Instagram
               color="currentColor"
               size={18}
-              className="text-zinc-400 hover:text-zinc-900 hover:mb-1 transform duration-300"
+              className="text-zinc-400 hover:text-zinc-900 transition ease-in-out hover:-translate-y-1 hover:scale-110 duration-300"
             />
           </Link>
         </li>
@@ -62,7 +62,7 @@ function Left() {
             <Twitter
               color="currentColor"
               size={18}
-              className="text-zinc-400 hover:text-zinc-900 hover:mb-1 transform duration-300"
+              className="text-zinc-400 hover:text-zinc-900 transition ease-in-out hover:-translate-y-1 hover:scale-110 duration-300"
             />
           </Link>
         </li>
@@ -75,7 +75,7 @@ function Left() {
             <Linkedin
               color="currentColor"
               size={18}
-              className="text-zinc-400 hover:text-zinc-900 hover:mb-1 transform duration-300"
+              className="text-zinc-400 hover:text-zinc-900 transition ease-in-out hover:-translate-y-1 hover:scale-110 duration-300"
             />
           </Link>
         </li>
@@ -112,7 +112,7 @@ function Right() {
           onMouseLeave={() => cursorChangeHandler("")}
         >
           <Link href="mailto:farizrachmanyusuf@gmail.com">
-            <div className="text-sm text-zinc-400 hover:text-zinc-900 hover:mr-2 transform duration-300">
+            <div className="text-sm text-zinc-400 hover:text-zinc-900 transition ease-in-out hover:-translate-x-1 duration-300">
               farizrachmanyusuf@gmail.com
             </div>
           </Link>
