@@ -12,11 +12,11 @@ export default function Introduction() {
         onMouseEnter={() => cursorChangeHandler("hovered")}
         onMouseLeave={() => cursorChangeHandler("")}
       >
-        {"Fariz Rachman Yusuf.".split(" ").map((word) => (
-          <div key={word} id={word} className="flex">
-            {word.split("").map((letter) => (
+        {"Fariz Rachman Yusuf.".split(" ").map((word, index) => (
+          <div key={`${word}-${index}`} id={word} className="flex">
+            {word.split("").map((letter, index) => (
               <div
-                key={letter}
+                key={`${letter}-${index}`}
                 className="transition ease-in-out hover:-translate-y-4 duration-300"
               >
                 {letter}

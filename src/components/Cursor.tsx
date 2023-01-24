@@ -5,6 +5,11 @@ import React from "react";
 export default function Cursor() {
   const { cursorType, cursorChangeHandler } = React.useContext(MouseContext);
   const { x, y } = Hooks.useMousePosition();
+  const { innerHeight: height, innerWidth: width } = window;
+  const isMobile = height < 900 && width < 450;
+  if (isMobile) {
+    return <></>;
+  }
   return (
     <>
       <div

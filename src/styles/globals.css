@@ -12,7 +12,7 @@
     left: 0;
     width: 22px;
     height: 22px;
-    border: 2px solid rgba(31, 30, 30, 0.808);
+    border: 2px solid black;
     border-radius: 100%;
     transform: translate(-50%, -50%);
     -webkit-transition-duration: 100ms;
@@ -22,6 +22,7 @@
     will-change: width, height, transform, border;
     z-index: 999;
     pointer-events: none;
+    outline: none !important;
 }
 
 .dot {
