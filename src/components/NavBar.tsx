@@ -44,8 +44,8 @@ export default function NavBar() {
                       className="block h-16 w-16 lg:hidden"
                       src={
                         preloading
-                          ? "/assets/images/logo-animated.gif"
-                          : "/assets/images/logo.png"
+                          ? "/assets/images/logo-animated-transparent.gif"
+                          : "/assets/images/logo-transparent.png"
                       }
                       alt="FRY"
                       width={120}
@@ -55,8 +55,8 @@ export default function NavBar() {
                       className="hidden h-16 w-16 lg:block"
                       src={
                         preloading
-                          ? "/assets/images/logo-animated.gif"
-                          : "/assets/images/logo.png"
+                          ? "/assets/images/logo-animated-transparent.gif"
+                          : "/assets/images/logo-transparent.png"
                       }
                       alt="FRY"
                       width={120}
