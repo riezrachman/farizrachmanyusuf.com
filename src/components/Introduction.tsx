@@ -8,7 +8,7 @@ export default function Introduction() {
     <div className="flex flex-col p-8 !pt-40 lg:p-24">
       <div className="pb-3">Hi, my name is</div>
       <div
-        className="text-7xl font-bold flex gap-3"
+        className="text-7xl font-bold flex flex-wrap gap-1 lg:gap-3 w-full"
         onMouseEnter={() => cursorChangeHandler("hovered")}
         onMouseLeave={() => cursorChangeHandler("")}
       >
