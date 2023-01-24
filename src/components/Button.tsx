@@ -1,5 +1,7 @@
+import { MouseContext } from "@/context/mouse-context";
 import clsx from "clsx";
 import Link from "next/link";
+import React from "react";
 import { UrlObject } from "url";
 
 const SizeClassNames = {
@@ -42,6 +44,7 @@ export default function Button({
   children = "Default Button",
   onClick,
 }: ButtonProps) {
+  const { cursorType, cursorChangeHandler } = React.useContext(MouseContext);
   if (href) {
     return (
       <Link
@@ -54,6 +57,8 @@ export default function Button({
           rounded ? "!rounded-full" : ""
         )}
         onClick={onClick}
+        onMouseEnter={() => cursorChangeHandler("hovered")}
+        onMouseLeave={() => cursorChangeHandler("")}
       >
         {loading ? "Loading..." : children}
       </Link>
@@ -70,6 +75,8 @@ export default function Button({
       )}
       onClick={onClick}
       disabled={disabled}
+      onMouseEnter={() => cursorChangeHandler("hovered")}
+      onMouseLeave={() => cursorChangeHandler("")}
     >
       {loading ? "Loading..." : children}
     </button>

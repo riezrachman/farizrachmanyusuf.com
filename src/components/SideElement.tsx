@@ -1,3 +1,4 @@
+import { MouseContext } from "@/context/mouse-context";
 import Hooks from "@/hooks";
 import clsx from "clsx";
 import Link from "next/link";
@@ -6,6 +7,7 @@ import { GitHub, Instagram, Linkedin, Twitter } from "react-feather";
 
 function Left() {
   const [isBottom, setIsBottom] = React.useState(false);
+  const { cursorType, cursorChangeHandler } = React.useContext(MouseContext);
 
   const scroll = Hooks.useScrollListener();
 
@@ -25,7 +27,11 @@ function Left() {
       )}
     >
       <ul className="flex flex-col items-center list-none after:content-[''] after:w-[1px] after:h-[90px] after:my-0 after:mx-auto after:bg-zinc-900">
-        <li className="m-4">
+        <li
+          className="m-4"
+          onMouseEnter={() => cursorChangeHandler("hovered")}
+          onMouseLeave={() => cursorChangeHandler("")}
+        >
           <Link href="https://github.com/riezrachman" target="_blank">
             <GitHub
               color="currentColor"
@@ -34,7 +40,11 @@ function Left() {
             />
           </Link>
         </li>
-        <li className="m-4">
+        <li
+          className="m-4"
+          onMouseEnter={() => cursorChangeHandler("hovered")}
+          onMouseLeave={() => cursorChangeHandler("")}
+        >
           <Link href="https://instagram.com/riezrachman" target="_blank">
             <Instagram
               color="currentColor"
@@ -43,7 +53,11 @@ function Left() {
             />
           </Link>
         </li>
-        <li className="m-4">
+        <li
+          className="m-4"
+          onMouseEnter={() => cursorChangeHandler("hovered")}
+          onMouseLeave={() => cursorChangeHandler("")}
+        >
           <Link href="https://twitter.com/riezrachman" target="_blank">
             <Twitter
               color="currentColor"
@@ -52,7 +66,11 @@ function Left() {
             />
           </Link>
         </li>
-        <li className="m-4 mb-8">
+        <li
+          className="m-4 mb-8"
+          onMouseEnter={() => cursorChangeHandler("hovered")}
+          onMouseLeave={() => cursorChangeHandler("")}
+        >
           <Link href="https://linkedin.com/in/riezrachman" target="_blank">
             <Linkedin
               color="currentColor"
@@ -68,6 +86,7 @@ function Left() {
 
 function Right() {
   const [isBottom, setIsBottom] = React.useState(false);
+  const { cursorType, cursorChangeHandler } = React.useContext(MouseContext);
 
   const scroll = Hooks.useScrollListener();
 
@@ -87,7 +106,11 @@ function Right() {
       )}
     >
       <ul className="flex flex-col items-center list-none after:content-[''] after:w-[1px] after:h-[90px] after:my-0 after:mx-auto after:bg-zinc-900">
-        <li className="m-8 mb-32 rotate-90">
+        <li
+          className="m-8 mb-32 rotate-90"
+          onMouseEnter={() => cursorChangeHandler("hovered")}
+          onMouseLeave={() => cursorChangeHandler("")}
+        >
           <Link href="mailto:farizrachmanyusuf@gmail.com">
             <div className="text-sm text-zinc-400 hover:text-zinc-900 hover:mr-2 transform duration-300">
               farizrachmanyusuf@gmail.com

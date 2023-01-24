@@ -6,9 +6,18 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Components from "@/components";
 import Hooks from "@/hooks";
 import { ExternalLink } from "react-feather";
+import { useCollection } from "react-firebase-hooks/firestore";
+import { collection } from "firebase/firestore";
+import Firebase from "firebaseConfig";
 
 export default function NavBar() {
   const { loading: preloading } = Hooks.usePreload();
+  const [snapshot, loading, error] = useCollection(
+    collection(Firebase.firestore, "profile"),
+    {
+      snapshotListenOptions: { includeMetadataChanges: true },
+    }
+  );
   return (
     <>
       <Disclosure
@@ -58,7 +67,7 @@ export default function NavBar() {
                 </div>
                 <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                   <Transition
-                    show={!preloading}
+                    show={!loading}
                     enter={`transition-all ease-in-out duration-500`}
                     enterFrom="opacity-0 translate-x-10"
                     enterTo="opacity-100 translate-x-0"
@@ -68,7 +77,7 @@ export default function NavBar() {
                   >
                     <Components.Button
                       variant="outline"
-                      href="/resume.pdf"
+                      href={snapshot?.docs.at(0)?.data().resume_url}
                       target="_blank"
                     >
                       <div className="mr-2">Resume</div>

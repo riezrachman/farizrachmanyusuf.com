@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { Disclosure, Transition } from "@headlessui/react";
 import clsx from "clsx";
+import { MouseContext } from "@/context/mouse-context";
 
 function useCurrentAnchor() {
   const router = useRouter();
@@ -19,6 +20,7 @@ interface DesktopProps {
 
 export function Desktop({ href, label, delay }: DesktopProps) {
   const currentAnchor = useCurrentAnchor();
+  const { cursorType, cursorChangeHandler } = React.useContext(MouseContext);
   return (
     <Transition.Child
       as={React.Fragment}
@@ -37,6 +39,8 @@ export function Desktop({ href, label, delay }: DesktopProps) {
             ? "border-zinc-500 text-gray-900"
             : "border-transparent text-gray-500"
         )}
+        onMouseEnter={() => cursorChangeHandler("hovered")}
+        onMouseLeave={() => cursorChangeHandler("")}
       >
         {label}
       </Link>
