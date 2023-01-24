@@ -79,6 +79,7 @@ export default function NavBar() {
                       variant="outline"
                       href={snapshot?.docs.at(0)?.data().resume_url}
                       target="_blank"
+                      disabled
                     >
                       <div className="mr-2">Resume</div>
                       <ExternalLink size={18} />

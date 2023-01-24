@@ -48,15 +48,15 @@ export default function Button({
   if (href) {
     return (
       <Link
-        href={href}
-        target={target}
+        href={disabled ? "#" : href}
+        target={disabled ? "_self" : target}
         className={clsx(
           "inline-flex items-center border font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-zinc-500 focus:ring-offset-2 duration-300",
           SizeClassNames[size],
           VariantClassNames[variant],
           rounded ? "!rounded-full" : ""
         )}
-        onClick={onClick}
+        onClick={disabled ? () => null : onClick}
         onMouseEnter={() => cursorChangeHandler("hovered")}
         onMouseLeave={() => cursorChangeHandler("")}
       >
