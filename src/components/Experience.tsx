@@ -21,7 +21,7 @@ function ExperienceTab({ label }: ExperienceTabProps) {
       {({ selected }) => (
         <button
           className={clsx(
-            "p-4 border-b-2 lg:border-b-0 lg:border-l-2 hover:bg-zinc-100/50 hover:border-zinc-900 hover:text-zinc-900 focus:outline-none focus:ring-0 duration-300",
+            "p-4 text-center lg:text-left border-b-2 lg:border-b-0 lg:border-l-2 hover:bg-zinc-100/50 hover:border-zinc-900 hover:text-zinc-900 focus:outline-none focus:ring-0 duration-300",
             selected
               ? "bg-zinc-100/50 border-zinc-900 text-zinc-900"
               : "border-transparent text-zinc-400"
