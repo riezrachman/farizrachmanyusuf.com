@@ -1,4 +1,5 @@
 import About from "./About";
+import Alert from "./Alert";
 import Button from "./Button";
 import Contact from "./Contact";
 import Cursor from "./Cursor";
@@ -16,6 +17,7 @@ import Work from "./Work";
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   About,
+  Alert,
   Button,
   Contact,
   Cursor,
