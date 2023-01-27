@@ -5,7 +5,7 @@ export default function Introduction() {
   const { cursorType, cursorChangeHandler } = React.useContext(MouseContext);
 
   return (
-    <div className="flex flex-col p-8 !pt-40 lg:p-24">
+    <section className="flex flex-col p-8 !pt-40 lg:p-24">
       <div className="pb-3">Hi, my name is</div>
       <div
         className="text-7xl font-bold flex flex-wrap gap-1 lg:gap-3 w-full"
@@ -31,6 +31,6 @@ export default function Introduction() {
         rock-solid experience in building complex application with modern
         technologies.
       </div>
-    </div>
+    </section>
   );
 }

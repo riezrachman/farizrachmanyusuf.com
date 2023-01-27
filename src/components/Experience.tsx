@@ -11,6 +11,7 @@ import React, { Fragment } from "react";
 import { useCollection } from "react-firebase-hooks/firestore";
 import Firebase from "firebaseConfig";
 import { MouseContext } from "@/context/mouse-context";
+import { Experience as ExperienceType } from "@/types";
 
 interface ExperienceTabProps {
   label: string;
@@ -39,36 +40,26 @@ function ExperienceTab({ label }: ExperienceTabProps) {
 }
 
 interface ExperienceContentProps {
-  company: string;
-  position: string;
-  startAt: Date;
-  endAt?: Date;
-  jobDescription: string[];
+  experience: ExperienceType;
 }
 
-function ExperienceContent({
-  company,
-  position,
-  startAt,
-  endAt,
-  jobDescription,
-}: ExperienceContentProps) {
+function ExperienceContent({ experience }: ExperienceContentProps) {
   return (
     <Tab.Panel>
       <div className="flex flex-col lg:flex-row gap-0 lg:gap-1 text-xl font-semibold mb-2">
-        <div className="font-light">{position}</div>
-        <Link href="/" className="">
-          @ {company}
-        </Link>
+        <div className="font-light">{experience.position}</div>
+        <div className="">@ {experience.company}</div>
       </div>
       <div className="flex gap-1 mb-4 text-sm">
-        <div>{format(startAt, "MMM yyyy")}</div>
+        <div>{format(experience.startAt, "MMM yyyy")}</div>
         <div>{" - "}</div>
-        <div>{endAt ? format(endAt, "MMM yyyy") : "Present"}</div>
+        <div>
+          {experience.endAt ? format(experience.endAt, "MMM yyyy") : "Present"}
+        </div>
       </div>
       <div>
         <ul className="flex flex-col gap-2">
-          {jobDescription.map((desc) => (
+          {experience.jobDescription.map((desc) => (
             <li
               key={desc}
               className="before:content-['▹'] before:text-xs before:mr-2 before:text-zinc-400"
@@ -101,7 +92,10 @@ export default function Experience() {
   const docs = snapshot?.docs.sort(compare);
 
   return (
-    <div id="Experience" className="flex flex-col items-center p-8 lg:p-24">
+    <section
+      id="Experience"
+      className="flex flex-col items-center px-8 py-24 lg:p-24"
+    >
       <div className="flex items-center justify-start w-full text-3xl pb-8 font-semibold after:relative after:content-[''] after:w-[350px] after:h-[1px] after:ml-[20px] after:bg-zinc-900">
         Where I&apos;ve Worked
       </div>
@@ -120,16 +114,18 @@ export default function Experience() {
             {docs?.map((doc) => (
               <ExperienceContent
                 key={doc.id}
-                company={doc.data().company}
-                position={doc.data().position}
-                startAt={doc.data().startAt.toDate()}
-                endAt={doc.data().endAt?.toDate()}
-                jobDescription={doc.data().jobDescription}
+                experience={{
+                  company: doc.data().company,
+                  position: doc.data().position,
+                  startAt: doc.data().startAt.toDate(),
+                  endAt: doc.data().endAt?.toDate(),
+                  jobDescription: doc.data().jobDescription,
+                }}
               />
             ))}
           </Tab.Panels>
         </Tab.Group>
       </div>
-    </div>
+    </section>
   );
 }

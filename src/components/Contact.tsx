@@ -2,7 +2,7 @@ import Components from "@/components";
 
 export default function Contact() {
   return (
-    <div
+    <section
       id="Contact"
       className="flex flex-col items-center p-8 lg:p-24 mx-0 lg:mx-24"
     >
@@ -21,6 +21,6 @@ export default function Contact() {
       >
         Say Hello 👋🏻
       </Components.Button>
-    </div>
+    </section>
   );
 }

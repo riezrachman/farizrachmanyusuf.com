@@ -1,11 +1,10 @@
 import React from "react";
 import Image from "next/image";
 import { Disclosure, Transition } from "@headlessui/react";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
 import Components from "@/components";
 import Hooks from "@/hooks";
-import { ExternalLink } from "react-feather";
+import { ExternalLink, Menu, X } from "react-feather";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { collection } from "firebase/firestore";
 import Firebase from "firebaseConfig";
@@ -22,7 +21,7 @@ export default function NavBar() {
     <>
       <Disclosure
         as="nav"
-        className="bg-[#fbfaf9]/20 backdrop-filter backdrop-blur z-50 shadow fixed w-full"
+        className="bg-[#fbfaf9]/20 backdrop-filter backdrop-blur z-50 shadow fixed w-full duration-300"
       >
         {({ open }) => (
           <>
@@ -32,9 +31,9 @@ export default function NavBar() {
                   <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-zinc-500">
                     <span className="sr-only">Open Menu</span>
                     {open ? (
-                      <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
+                      <X className="block h-6 w-6" aria-hidden="true" />
                     ) : (
-                      <Bars3Icon className="block h-6 w-6" aria-hidden="true" />
+                      <Menu className="block h-6 w-6" aria-hidden="true" />
                     )}
                   </Disclosure.Button>
                 </div>

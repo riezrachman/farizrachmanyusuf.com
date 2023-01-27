@@ -17,9 +17,9 @@ export default function About() {
   );
 
   return (
-    <div
+    <section
       id="About"
-      className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-12 p-8 lg:p-24 lg:mx-24"
+      className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-12 px-8 py-24 lg:p-24 lg:mx-24"
     >
       <div>
         <div className="flex items-center text-3xl pb-8 font-semibold after:relative after:content-[''] after:w-[350px] after:h-[1px] after:ml-[20px] after:bg-zinc-900">
@@ -72,6 +72,6 @@ export default function About() {
           className="absolute top-0 left-0 rounded brightness-50 group-hover:brightness-100 duration-300"
         />
       </div>
-    </div>
+    </section>
   );
 }

@@ -19,8 +19,30 @@ interface DesktopProps {
 }
 
 export function Desktop({ href, label, delay }: DesktopProps) {
+  const router = useRouter();
   const currentAnchor = useCurrentAnchor();
   const { cursorType, cursorChangeHandler } = React.useContext(MouseContext);
+
+  const handleClick = (event: any) => {
+    event.preventDefault();
+    const target: string = event.target.getAttribute("href");
+    const element: any = document.querySelector(target.replace("/", ""));
+    if (element) {
+      window.scroll({
+        top: element?.offsetTop,
+        left: 0,
+        behavior: "smooth",
+      });
+      router.push(
+        {
+          pathname: "/",
+        },
+        undefined,
+        { shallow: true }
+      );
+    }
+  };
+
   return (
     <Transition.Child
       as={React.Fragment}
@@ -41,6 +63,7 @@ export function Desktop({ href, label, delay }: DesktopProps) {
         )}
         onMouseEnter={() => cursorChangeHandler("hovered")}
         onMouseLeave={() => cursorChangeHandler("")}
+        onClick={handleClick}
       >
         {label}
       </Link>
@@ -54,7 +77,29 @@ interface MobileProps {
 }
 
 export function Mobile({ href, label }: MobileProps) {
+  const router = useRouter();
   const currentAnchor = useCurrentAnchor();
+
+  const handleClick = (event: any) => {
+    event.preventDefault();
+    const target: string = event.target.getAttribute("href");
+    const element: any = document.querySelector(target.replace("/", ""));
+    if (element) {
+      window.scroll({
+        top: element?.offsetTop,
+        left: 0,
+        behavior: "smooth",
+      });
+      router.push(
+        {
+          pathname: "/",
+        },
+        undefined,
+        { shallow: true }
+      );
+    }
+  };
+
   return (
     <Disclosure.Button as={React.Fragment}>
       <Link
@@ -65,6 +110,7 @@ export function Mobile({ href, label }: MobileProps) {
             ? "border-zinc-500 bg-zinc-50 text-zinc-700"
             : "border-transparent text-gray-500"
         )}
+        onClick={handleClick}
       >
         {label}
       </Link>

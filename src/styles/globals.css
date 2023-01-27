@@ -6,6 +6,12 @@
     cursor: none !important;
 }
 
+@layer components {
+    section {
+        @apply scroll-smooth duration-300
+    }
+}
+
 .ring {
     position: fixed;
     top: 0;
