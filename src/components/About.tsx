@@ -3,8 +3,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { useCollection } from "react-firebase-hooks/firestore";
 import Firebase from "firebaseConfig";
+import React from "react";
+import { MouseContext } from "@/context/mouse-context";
 
 export default function About() {
+  const { cursorType, cursorChangeHandler } = React.useContext(MouseContext);
+
   const [snapshot, loading, error] = useCollection(
     collection(Firebase.firestore, "profile"),
     {
@@ -54,7 +58,11 @@ export default function About() {
           </ul>
         </div>
       </div>
-      <div className="relative group h-[300px] w-[300px]">
+      <div
+        className="relative group h-[300px] w-[300px]"
+        onMouseEnter={() => cursorChangeHandler("hovered")}
+        onMouseLeave={() => cursorChangeHandler("")}
+      >
         <div className="h-[300px] w-[300px] border border-zinc-900 absolute top-8 left-8 rounded transform group-hover:top-4 group-hover:left-4 duration-300"></div>
         <Image
           src="/assets/images/profile.png"

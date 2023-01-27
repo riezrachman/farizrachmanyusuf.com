@@ -10,12 +10,14 @@ import Link from "next/link";
 import React, { Fragment } from "react";
 import { useCollection } from "react-firebase-hooks/firestore";
 import Firebase from "firebaseConfig";
+import { MouseContext } from "@/context/mouse-context";
 
 interface ExperienceTabProps {
   label: string;
 }
 
 function ExperienceTab({ label }: ExperienceTabProps) {
+  const { cursorType, cursorChangeHandler } = React.useContext(MouseContext);
   return (
     <Tab as={Fragment}>
       {({ selected }) => (
@@ -26,6 +28,8 @@ function ExperienceTab({ label }: ExperienceTabProps) {
               ? "bg-zinc-100/50 border-zinc-900 text-zinc-900"
               : "border-transparent text-zinc-400"
           )}
+          onMouseEnter={() => cursorChangeHandler("hovered")}
+          onMouseLeave={() => cursorChangeHandler("")}
         >
           {label}
         </button>
