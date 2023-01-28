@@ -85,7 +85,7 @@ export default function Work() {
         <div className="portfolio">
           <Swiper
             className="sites hidden lg:block"
-            spaceBetween={windowWidth < 960 ? 20 : 50}
+            spaceBetween={windowWidth < 960 ? 20 : 40}
             centeredSlides
             loop
             slidesPerView={windowWidth < 960 ? 1.5 : 2}
@@ -95,7 +95,7 @@ export default function Work() {
             speed={windowWidth * 10}
           >
             {snapshot?.docs.map((doc) => (
-              <SwiperSlide key={doc.id}>
+              <SwiperSlide key={doc.id} className="!w-72">
                 <WorkItem
                   work={{
                     name: doc.data().name,
