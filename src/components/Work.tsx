@@ -17,7 +17,7 @@ function WorkItem({ work }: WorkItemProps) {
   return (
     <div
       key={"#"}
-      className="flex flex-col overflow-hidden rounded-lg lg:shadow-lg lg:w-72 h-[500px] my-8"
+      className="flex flex-col overflow-hidden rounded-lg shadow-lg lg:w-72 h-[500px] my-8"
     >
       <div className="flex-shrink-0">
         {work.image ? (
@@ -82,9 +82,9 @@ export default function Work() {
         What I&apos;ve Contributed
       </div>
       {(snapshot?.docs.length ?? 0) > 0 ? (
-        <div className="portfolio">
+        <div className="overflow-hidden">
           <Swiper
-            className="sites hidden lg:block"
+            className="hidden lg:block"
             spaceBetween={windowWidth < 960 ? 20 : 40}
             centeredSlides
             loop
@@ -95,7 +95,10 @@ export default function Work() {
             speed={windowWidth * 10}
           >
             {snapshot?.docs.map((doc) => (
-              <SwiperSlide key={doc.id} className="!w-72">
+              <SwiperSlide
+                key={doc.id}
+                className="!w-72 transition ease-in-out hover:-translate-y-4 duration-300"
+              >
                 <WorkItem
                   work={{
                     name: doc.data().name,
@@ -109,13 +112,13 @@ export default function Work() {
             ))}
           </Swiper>
           <Swiper
-            className="sites block lg:hidden"
+            className="block lg:hidden w-72"
             effect="cards"
             loop
             modules={[EffectCards]}
           >
             {snapshot?.docs.map((doc) => (
-              <SwiperSlide key={doc.id}>
+              <SwiperSlide key={doc.id} className="!w-72">
                 <WorkItem
                   work={{
                     name: doc.data().name,
