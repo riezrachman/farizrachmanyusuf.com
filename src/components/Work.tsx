@@ -4,20 +4,25 @@ import { collection } from "firebase/firestore";
 import Firebase from "firebaseConfig";
 import { Swiper, SwiperSlide } from "swiper/react";
 import useWindowSize from "@/hooks/useWindowSize";
-import { EffectCards } from "swiper";
+import { Autoplay, EffectCards } from "swiper";
 import Image from "next/image";
 import { Work as WorkType } from "@/types";
 import { ExternalLink, Image as ImageIcon } from "react-feather";
+import React from "react";
+import { MouseContext } from "@/context/mouse-context";
 
 interface WorkItemProps {
   work: WorkType;
 }
 
 function WorkItem({ work }: WorkItemProps) {
+  const { cursorType, cursorChangeHandler } = React.useContext(MouseContext);
+
   return (
     <div
-      key={"#"}
       className="flex flex-col overflow-hidden rounded-lg shadow-lg lg:w-72 h-[500px] my-8"
+      onMouseEnter={() => cursorChangeHandler("hovered")}
+      onMouseLeave={() => cursorChangeHandler("")}
     >
       <div className="flex-shrink-0">
         {work.image ? (
@@ -36,7 +41,7 @@ function WorkItem({ work }: WorkItemProps) {
       </div>
       <div className="flex flex-1 flex-col justify-between bg-white p-6">
         <div className="flex-1">
-          <p className="text-sm font-medium text-indigo-600">
+          <p className="text-sm font-medium text-zinc-600">
             <div className="hover:underline">{work.associate}</div>
           </p>
           <div className="mt-2 block">
@@ -88,11 +93,12 @@ export default function Work() {
             spaceBetween={windowWidth < 960 ? 20 : 40}
             centeredSlides
             loop
-            slidesPerView={windowWidth < 960 ? 1.5 : 2}
+            slidesPerView={"auto"}
             loopedSlides={snapshot?.docs.length}
             mousewheel={{ forceToAxis: true }}
-            autoplay={{ delay: 0 }}
+            autoplay={{ delay: 2500, disableOnInteraction: false }}
             speed={windowWidth * 10}
+            modules={[Autoplay]}
           >
             {snapshot?.docs.map((doc) => (
               <SwiperSlide
