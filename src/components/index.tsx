@@ -5,6 +5,7 @@ import Contact from "./Contact";
 import Cursor from "./Cursor";
 import Experience from "./Experience";
 import Footer from "./Footer";
+import ImageWithFallback from "./ImageWithFallback";
 import Introduction from "./Introduction";
 import Layout from "./Layout";
 import NavBar from "./NavBar";
@@ -23,6 +24,7 @@ export default {
   Cursor,
   Experience,
   Footer,
+  ImageWithFallback,
   Introduction,
   Layout,
   NavBar,

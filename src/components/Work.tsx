@@ -25,19 +25,13 @@ function WorkItem({ work }: WorkItemProps) {
       onMouseLeave={() => cursorChangeHandler("")}
     >
       <div className="flex-shrink-0">
-        {work.image ? (
-          <Image
-            className="h-48 w-full object-cover"
-            src={work.image}
-            alt="Image"
-            width={240}
-            height={240}
-          />
-        ) : (
-          <div className="h-48 w-full object-cover bg-zinc-300 flex items-center justify-center text-zinc-700">
-            <ImageIcon />
-          </div>
-        )}
+        <Components.ImageWithFallback
+          className="h-48 w-full object-cover"
+          src={work.image}
+          alt="Image"
+          width={240}
+          height={240}
+        />
       </div>
       <div className="flex flex-1 flex-col justify-between bg-white p-6">
         <div className="flex-1">
