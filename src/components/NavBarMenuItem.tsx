@@ -56,10 +56,10 @@ export function Desktop({ href, label, delay }: DesktopProps) {
       <Link
         href={href}
         className={clsx(
-          "inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium hover:border-gray-300 hover:text-gray-700 duration-300",
+          "inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium hover:border-zinc-300 hover:text-zinc-700 duration-300",
           currentAnchor === href
-            ? "border-zinc-500 text-gray-900"
-            : "border-transparent text-gray-500"
+            ? "border-zinc-500 text-zinc-900"
+            : "border-transparent text-zinc-500"
         )}
         onMouseEnter={() => cursorChangeHandler("hovered")}
         onMouseLeave={() => cursorChangeHandler("")}
@@ -105,10 +105,10 @@ export function Mobile({ href, label }: MobileProps) {
       <Link
         href={href}
         className={clsx(
-          "block border-l-4 py-2 pl-3 pr-4 text-base font-medium hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700 duration-300",
+          "block border-l-4 py-2 pl-3 pr-4 text-base font-medium hover:border-zinc-300 hover:bg-zinc-50 hover:text-zinc-700 duration-300",
           currentAnchor === href
             ? "border-zinc-500 bg-zinc-50 text-zinc-700"
-            : "border-transparent text-gray-500"
+            : "border-transparent text-zinc-500"
         )}
         onClick={handleClick}
       >
