@@ -1,5 +1,6 @@
 import { MouseContext } from "@/context/mouse-context";
 import Hooks from "@/hooks";
+import clsx from "clsx";
 import React from "react";
 
 export default function Cursor() {
@@ -14,10 +15,10 @@ export default function Cursor() {
     <>
       <div
         style={{ left: `${x}px`, top: `${y}px` }}
-        className={"ring " + cursorType}
+        className={clsx("ring hidden lg:block", cursorType)}
       ></div>
       <div
-        className={"dot " + cursorType}
+        className={clsx("dot hidden lg:block", cursorType)}
         style={{ left: `${x}px`, top: `${y}px` }}
       ></div>
     </>
