@@ -38,7 +38,7 @@ function WorkItem({ work }: WorkItemProps) {
       <div className="flex flex-1 flex-col justify-between bg-white p-6">
         <div className="flex-1">
           <p className="text-sm font-medium text-zinc-600">
-            <div className="hover:underline">{work.associate}</div>
+            <span className="hover:underline">{work.associate}</span>
           </p>
           <div className="mt-2 block">
             <p className="text-xl font-semibold text-gray-900">{work.name}</p>
