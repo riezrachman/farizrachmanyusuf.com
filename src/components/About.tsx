@@ -19,13 +19,27 @@ export default function About() {
   return (
     <section
       id="About"
-      className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-12 px-8 py-24 lg:p-24 lg:mx-24"
+      className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 px-8 py-24 lg:p-24 lg:mx-24"
     >
       <div>
         <div className="flex items-center text-3xl pb-8 font-semibold after:relative after:content-[''] after:w-[350px] after:h-[1px] after:ml-[20px] after:bg-zinc-900">
           About Me
         </div>
         <div>
+          <div
+            className="relative group h-[300px] w-[300px] block lg:hidden mb-16"
+            onMouseEnter={() => cursorChangeHandler("hovered")}
+            onMouseLeave={() => cursorChangeHandler("")}
+          >
+            <div className="h-[300px] w-[300px] border border-zinc-900 absolute top-8 left-8 rounded transform group-hover:top-4 group-hover:left-4 duration-300"></div>
+            <Image
+              src="/assets/images/profile.png"
+              alt="Profile Image"
+              width={300}
+              height={300}
+              className="absolute top-0 left-0 rounded brightness-50 group-hover:brightness-100 duration-300"
+            />
+          </div>
           <p className="pb-4">
             Hi there, my name is Fariz. I first start my journey back in 2010
             when I tried to contribute on Android commnunity - turns out it
@@ -59,7 +73,7 @@ export default function About() {
         </div>
       </div>
       <div
-        className="relative group h-[300px] w-[300px]"
+        className="relative group h-[300px] w-[300px] hidden lg:block"
         onMouseEnter={() => cursorChangeHandler("hovered")}
         onMouseLeave={() => cursorChangeHandler("")}
       >
