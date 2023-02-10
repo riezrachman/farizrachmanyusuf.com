@@ -1,6 +1,7 @@
-import clsx from "clsx";
-import Image from "next/image";
 import React from "react";
+import Image from "next/image";
+import clsx from "clsx";
+
 import { Image as ImageIcon } from "react-feather";
 
 interface ImageWithFallbackProps {
@@ -12,7 +13,7 @@ interface ImageWithFallbackProps {
   fill?: boolean;
 }
 
-export default function ImageWithFallback({
+export function ImageWithFallback({
   src,
   alt,
   width,

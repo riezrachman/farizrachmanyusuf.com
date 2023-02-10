@@ -2,16 +2,18 @@ import React from "react";
 import Image from "next/image";
 import { Disclosure, Transition } from "@headlessui/react";
 
-import Components from "@/components";
-import Hooks from "@/hooks";
 import { ExternalLink, Menu, X } from "react-feather";
-import { useCollection } from "react-firebase-hooks/firestore";
-import { collection } from "firebase/firestore";
-import Firebase from "firebaseConfig";
 
-export default function NavBar() {
-  const { loading: preloading } = Hooks.usePreload();
-  const [snapshot, loading, error] = useCollection(
+import Firebase from "firebase_config";
+import { collection } from "firebase/firestore";
+import { useCollection } from "react-firebase-hooks/firestore";
+
+import { Button, NavBarMenu } from "@/components";
+import { usePreload } from "@/hooks";
+
+export function NavBar() {
+  const { loading: preloading } = usePreload();
+  const [snapshot, loading] = useCollection(
     collection(Firebase.firestore, "profile"),
     {
       snapshotListenOptions: { includeMetadataChanges: true },
@@ -62,7 +64,7 @@ export default function NavBar() {
                       height={120}
                     />
                   </div>
-                  <Components.NavBarMenu.Desktop />
+                  <NavBarMenu.Desktop />
                 </div>
                 <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                   <Transition
@@ -74,20 +76,20 @@ export default function NavBar() {
                     leaveFrom="opacity-100"
                     leaveTo="opacity-0"
                   >
-                    <Components.Button
+                    <Button
                       variant="outline"
                       href={snapshot?.docs.at(0)?.data().resume_url}
                       target="_blank"
                     >
                       <div className="mr-2">Resume</div>
                       <ExternalLink size={18} />
-                    </Components.Button>
+                    </Button>
                   </Transition>
                 </div>
               </div>
             </div>
 
-            <Components.NavBarMenu.Mobile />
+            <NavBarMenu.Mobile />
           </>
         )}
       </Disclosure>

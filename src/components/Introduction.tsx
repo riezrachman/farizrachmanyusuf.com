@@ -1,8 +1,9 @@
-import { MouseContext } from "@/context/mouse-context";
 import React from "react";
 
-export default function Introduction() {
-  const { cursorType, cursorChangeHandler } = React.useContext(MouseContext);
+import { MouseContext } from "@/context/mouse-context";
+
+export function Introduction() {
+  const { cursorChangeHandler } = React.useContext(MouseContext);
 
   return (
     <section className="flex flex-col p-8 !pt-40 lg:p-24">

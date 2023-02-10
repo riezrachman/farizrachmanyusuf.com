@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function useMousePosition() {
+export function useMousePosition() {
   const [mousePosition, setMousePosition] = React.useState({
     x: null,
     y: null,

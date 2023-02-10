@@ -1,13 +1,14 @@
-import { Disclosure, Transition } from "@headlessui/react";
-import { useCollection } from "react-firebase-hooks/firestore";
-import Firebase from "firebaseConfig";
-
-import Components from "@/components";
-import { collection } from "firebase/firestore";
 import React from "react";
+import { Disclosure, Transition } from "@headlessui/react";
 
-export function Desktop() {
-  const [snapshot, loading, error] = useCollection(
+import Firebase from "firebase_config";
+import { collection } from "firebase/firestore";
+import { useCollection } from "react-firebase-hooks/firestore";
+
+import { NavBarMenuItem } from "@/components";
+
+function Desktop() {
+  const [snapshot, loading] = useCollection(
     collection(Firebase.firestore, "menus"),
     {
       snapshotListenOptions: { includeMetadataChanges: true },
@@ -23,7 +24,7 @@ export function Desktop() {
       {snapshot?.docs
         .sort((a, b) => a.data().order - b.data().order)
         .map((doc, index) => (
-          <Components.NavBarMenuItem.Desktop
+          <NavBarMenuItem.Desktop
             key={doc.id}
             delay={`delay-[${index * 200}ms]`}
             href={doc.data().href}
@@ -34,13 +35,10 @@ export function Desktop() {
   );
 }
 
-export function Mobile() {
-  const [snapshot, loading, error] = useCollection(
-    collection(Firebase.firestore, "menus"),
-    {
-      snapshotListenOptions: { includeMetadataChanges: true },
-    }
-  );
+function Mobile() {
+  const [snapshot] = useCollection(collection(Firebase.firestore, "menus"), {
+    snapshotListenOptions: { includeMetadataChanges: true },
+  });
 
   return (
     <Transition
@@ -56,7 +54,7 @@ export function Mobile() {
         {snapshot?.docs
           .sort((a, b) => a.data().order - b.data().order)
           .map((doc) => (
-            <Components.NavBarMenuItem.Mobile
+            <NavBarMenuItem.Mobile
               key={doc.id}
               href={doc.data().href}
               label={doc.data().label}
@@ -67,8 +65,7 @@ export function Mobile() {
   );
 }
 
-// eslint-disable-next-line import/no-anonymous-default-export
-export default {
+export const NavBarMenu = {
   Desktop,
   Mobile,
 };

@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function useScrollListener() {
+export function useScrollListener() {
   const [scroll, setScroll] = React.useState({
     x: 0,
     y: 0,

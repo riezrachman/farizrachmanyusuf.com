@@ -1,6 +1,6 @@
 import React from "react";
 import { useRouter } from "next/router";
-import Firebase from "firebaseConfig";
+import Firebase from "firebase_config";
 import { Analytics, getAnalytics, logEvent } from "firebase/analytics";
 
 export const TrackingContext = React.createContext<Analytics | null>(null);

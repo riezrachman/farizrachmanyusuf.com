@@ -1,8 +1,9 @@
-import { MouseContext } from "@/context/mouse-context";
-import clsx from "clsx";
-import Link from "next/link";
 import React from "react";
+import Link from "next/link";
+import clsx from "clsx";
 import { UrlObject } from "url";
+
+import { MouseContext } from "@/context/mouse-context";
 
 const SizeClassNames = {
   xs: "rounded px-2.5 py-1.5 text-xs",
@@ -32,7 +33,7 @@ interface ButtonProps {
   onClick?: React.MouseEventHandler<any>;
 }
 
-export default function Button({
+export function Button({
   size = "md",
   variant = "primary",
   type = "button",
@@ -44,7 +45,7 @@ export default function Button({
   children = "Default Button",
   onClick,
 }: ButtonProps) {
-  const { cursorType, cursorChangeHandler } = React.useContext(MouseContext);
+  const { cursorChangeHandler } = React.useContext(MouseContext);
   if (href) {
     return (
       <Link

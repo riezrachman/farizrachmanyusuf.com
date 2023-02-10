@@ -1,5 +1,5 @@
 import { MouseContext } from "@/context/mouse-context";
-import Hooks from "@/hooks";
+import { useScrollListener } from "@/hooks";
 import clsx from "clsx";
 import Link from "next/link";
 import React from "react";
@@ -7,9 +7,9 @@ import { GitHub, Instagram, Linkedin, Twitter } from "react-feather";
 
 function Left() {
   const [isBottom, setIsBottom] = React.useState(false);
-  const { cursorType, cursorChangeHandler } = React.useContext(MouseContext);
+  const { cursorChangeHandler } = React.useContext(MouseContext);
 
-  const scroll = Hooks.useScrollListener();
+  const scroll = useScrollListener();
 
   React.useEffect(() => {
     if (!isBottom && window.scrollY > 1700) {
@@ -86,9 +86,9 @@ function Left() {
 
 function Right() {
   const [isBottom, setIsBottom] = React.useState(false);
-  const { cursorType, cursorChangeHandler } = React.useContext(MouseContext);
+  const { cursorChangeHandler } = React.useContext(MouseContext);
 
-  const scroll = Hooks.useScrollListener();
+  const scroll = useScrollListener();
 
   React.useEffect(() => {
     if (!isBottom && window.scrollY > 1700) {
@@ -122,8 +122,7 @@ function Right() {
   );
 }
 
-// eslint-disable-next-line import/no-anonymous-default-export
-export default {
+export const SideElement = {
   Left,
   Right,
 };

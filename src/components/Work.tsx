@@ -1,22 +1,24 @@
-import Components from "@/components";
+import { useContext } from "react";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { collection } from "firebase/firestore";
-import Firebase from "firebaseConfig";
 import { Swiper, SwiperSlide } from "swiper/react";
-import useWindowSize from "@/hooks/useWindowSize";
 import { Autoplay, EffectCards } from "swiper";
-import Image from "next/image";
-import { Work as WorkType } from "@/types";
-import { ExternalLink, Image as ImageIcon } from "react-feather";
-import React from "react";
+
+import { ExternalLink } from "react-feather";
+
+import Firebase from "firebase_config";
+
+import { Alert, Button, ImageWithFallback } from "@/components";
 import { MouseContext } from "@/context/mouse-context";
+import { useWindowSize } from "@/hooks";
+import { Work as WorkType } from "@/types";
 
 interface WorkItemProps {
   work: WorkType;
 }
 
 function WorkItem({ work }: WorkItemProps) {
-  const { cursorType, cursorChangeHandler } = React.useContext(MouseContext);
+  const { cursorChangeHandler } = useContext(MouseContext);
 
   return (
     <div
@@ -25,7 +27,7 @@ function WorkItem({ work }: WorkItemProps) {
       onMouseLeave={() => cursorChangeHandler("")}
     >
       <div className="flex-shrink-0">
-        <Components.ImageWithFallback
+        <ImageWithFallback
           className="h-48 w-full object-cover"
           src={work.image}
           alt="Image"
@@ -47,14 +49,10 @@ function WorkItem({ work }: WorkItemProps) {
         </div>
         <div>
           {work.url && (
-            <Components.Button
-              href={work.url}
-              target="_blank"
-              variant="outline"
-            >
+            <Button href={work.url} target="_blank" variant="outline">
               <div className="mr-2">Visit Link</div>
               <ExternalLink size={18} />
-            </Components.Button>
+            </Button>
           )}
         </div>
       </div>
@@ -62,15 +60,12 @@ function WorkItem({ work }: WorkItemProps) {
   );
 }
 
-export default function Work() {
+export function Work() {
   const windowWidth = useWindowSize()?.width ?? 0;
 
-  const [snapshot, loading, error] = useCollection(
-    collection(Firebase.firestore, "works"),
-    {
-      snapshotListenOptions: { includeMetadataChanges: true },
-    }
-  );
+  const [snapshot] = useCollection(collection(Firebase.firestore, "works"), {
+    snapshotListenOptions: { includeMetadataChanges: true },
+  });
 
   return (
     <section
@@ -133,10 +128,7 @@ export default function Work() {
           </Swiper>
         </div>
       ) : (
-        <Components.Alert
-          type="warning"
-          label="This section hasn't been uploaded yet."
-        />
+        <Alert type="warning" label="This section hasn't been uploaded yet." />
       )}
     </section>
   );

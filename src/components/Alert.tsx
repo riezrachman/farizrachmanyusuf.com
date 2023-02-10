@@ -1,10 +1,11 @@
+import clsx from "clsx";
+
 import {
   CheckCircleIcon,
   ExclamationTriangleIcon,
   InformationCircleIcon,
   XCircleIcon,
 } from "@heroicons/react/24/outline";
-import clsx from "clsx";
 
 interface AlertProps {
   label: string;
@@ -39,10 +40,7 @@ const TextColorClassName = {
   info: "text-blue-700",
 };
 
-export default function Alert({
-  type,
-  label = "Alert Example...",
-}: AlertProps) {
+export function Alert({ type, label = "Alert Example..." }: AlertProps) {
   const IconComponent = Icon[type];
   return (
     <div className={clsx("border-l-2 p-4", BackgroundColorClassName[type])}>

@@ -7,7 +7,7 @@ interface Size {
 
 type Cleanup = void | (() => void);
 
-export default function useWindowSize(): Size | undefined {
+export function useWindowSize(): Size | undefined {
   const [windowSize, setWindowSize] = React.useState<Size>();
   useWindowSizeEffect((width, height) => setWindowSize({ width, height }), []);
   return windowSize;

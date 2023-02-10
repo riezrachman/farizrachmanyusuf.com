@@ -1,6 +1,6 @@
-import Components from "@/components";
+import { Button } from "@/components";
 
-export default function Contact() {
+export function Contact() {
   return (
     <section
       id="Contact"
@@ -14,13 +14,13 @@ export default function Contact() {
         inbox is always open. Whether you have a question or just want to say
         hello, I&apos;ll try my best to get back to you!
       </div>
-      <Components.Button
+      <Button
         size="lg"
         variant="outline"
         href="mailto:farizrachmanyusuf@gmail.com"
       >
         Say Hello 👋🏻
-      </Components.Button>
+      </Button>
     </section>
   );
 }

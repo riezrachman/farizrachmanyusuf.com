@@ -1,11 +1,12 @@
-import { MouseContext } from "@/context/mouse-context";
-import Hooks from "@/hooks";
-import clsx from "clsx";
 import React from "react";
+import clsx from "clsx";
 
-export default function Cursor() {
-  const { cursorType, cursorChangeHandler } = React.useContext(MouseContext);
-  const { x, y } = Hooks.useMousePosition();
+import { MouseContext } from "@/context/mouse-context";
+import { useMousePosition } from "@/hooks";
+
+export function Cursor() {
+  const { cursorType } = React.useContext(MouseContext);
+  const { x, y } = useMousePosition();
   const { innerHeight: height, innerWidth: width } = window;
   const isMobile = height < 900 && width < 450;
   if (isMobile) {

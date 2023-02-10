@@ -1,15 +1,16 @@
-import { Tab, Transition } from "@headlessui/react";
-import clsx from "clsx";
+import React from "react";
+import { Tab } from "@headlessui/react";
 import { compareAsc, format } from "date-fns";
+import clsx from "clsx";
+
+import Firebase from "firebase_config";
 import {
   collection,
   DocumentData,
   QueryDocumentSnapshot,
 } from "firebase/firestore";
-import Link from "next/link";
-import React, { Fragment } from "react";
 import { useCollection } from "react-firebase-hooks/firestore";
-import Firebase from "firebaseConfig";
+
 import { MouseContext } from "@/context/mouse-context";
 import { Experience as ExperienceType } from "@/types";
 
@@ -18,9 +19,9 @@ interface ExperienceTabProps {
 }
 
 function ExperienceTab({ label }: ExperienceTabProps) {
-  const { cursorType, cursorChangeHandler } = React.useContext(MouseContext);
+  const { cursorChangeHandler } = React.useContext(MouseContext);
   return (
-    <Tab as={Fragment}>
+    <Tab as={React.Fragment}>
       {({ selected }) => (
         <button
           className={clsx(
@@ -73,9 +74,9 @@ function ExperienceContent({ experience }: ExperienceContentProps) {
   );
 }
 
-export default function Experience() {
+export function Experience() {
   const [selectedIndex, setSelectedIndex] = React.useState(0);
-  const [snapshot, loading, error] = useCollection(
+  const [snapshot] = useCollection(
     collection(Firebase.firestore, "experiences"),
     {
       snapshotListenOptions: { includeMetadataChanges: true },

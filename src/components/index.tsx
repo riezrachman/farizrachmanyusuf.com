@@ -1,36 +1,16 @@
-import About from "./About";
-import Alert from "./Alert";
-import Button from "./Button";
-import Contact from "./Contact";
-import Cursor from "./Cursor";
-import Experience from "./Experience";
-import Footer from "./Footer";
-import ImageWithFallback from "./ImageWithFallback";
-import Introduction from "./Introduction";
-import Layout from "./Layout";
-import NavBar from "./NavBar";
-import NavBarMenu from "./NavBarMenu";
-import NavBarMenuItem from "./NavBarMenuItem";
-import PreLoader from "./PreLoader";
-import SideElement from "./SideElement";
-import Work from "./Work";
-
-// eslint-disable-next-line import/no-anonymous-default-export
-export default {
-  About,
-  Alert,
-  Button,
-  Contact,
-  Cursor,
-  Experience,
-  Footer,
-  ImageWithFallback,
-  Introduction,
-  Layout,
-  NavBar,
-  NavBarMenu,
-  NavBarMenuItem,
-  PreLoader,
-  SideElement,
-  Work,
-};
+export * from "./About";
+export * from "./Alert";
+export * from "./Button";
+export * from "./Contact";
+export * from "./Cursor";
+export * from "./Experience";
+export * from "./Footer";
+export * from "./ImageWithFallback";
+export * from "./Introduction";
+export * from "./Layout";
+export * from "./NavBar";
+export * from "./NavBarMenu";
+export * from "./NavBarMenuItem";
+export * from "./PreLoader";
+export * from "./SideElement";
+export * from "./Work";

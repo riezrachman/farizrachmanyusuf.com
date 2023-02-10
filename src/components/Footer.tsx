@@ -1,10 +1,12 @@
-import { MouseContext } from "@/context/mouse-context";
-import Link from "next/link";
 import React from "react";
+import Link from "next/link";
+
 import { GitHub, Instagram, Linkedin, Twitter } from "react-feather";
 
-export default function Footer() {
-  const { cursorType, cursorChangeHandler } = React.useContext(MouseContext);
+import { MouseContext } from "@/context/mouse-context";
+
+export function Footer() {
+  const { cursorChangeHandler } = React.useContext(MouseContext);
 
   return (
     <footer className="bg-white">

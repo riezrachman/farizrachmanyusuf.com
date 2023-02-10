@@ -1,20 +1,19 @@
-import { collection } from "firebase/firestore";
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+
+import Firebase from "firebase_config";
+import { collection } from "firebase/firestore";
 import { useCollection } from "react-firebase-hooks/firestore";
-import Firebase from "firebaseConfig";
-import React from "react";
+
 import { MouseContext } from "@/context/mouse-context";
 
-export default function About() {
-  const { cursorType, cursorChangeHandler } = React.useContext(MouseContext);
+export function About() {
+  const { cursorChangeHandler } = React.useContext(MouseContext);
 
-  const [snapshot, loading, error] = useCollection(
-    collection(Firebase.firestore, "profile"),
-    {
-      snapshotListenOptions: { includeMetadataChanges: true },
-    }
-  );
+  const [snapshot] = useCollection(collection(Firebase.firestore, "profile"), {
+    snapshotListenOptions: { includeMetadataChanges: true },
+  });
 
   return (
     <section

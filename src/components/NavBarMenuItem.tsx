@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { Disclosure, Transition } from "@headlessui/react";
 import clsx from "clsx";
+
 import { MouseContext } from "@/context/mouse-context";
 
 function useCurrentAnchor() {
@@ -18,10 +19,10 @@ interface DesktopProps {
   delay?: string;
 }
 
-export function Desktop({ href, label, delay }: DesktopProps) {
+function Desktop({ href, label, delay }: DesktopProps) {
   const router = useRouter();
   const currentAnchor = useCurrentAnchor();
-  const { cursorType, cursorChangeHandler } = React.useContext(MouseContext);
+  const { cursorChangeHandler } = React.useContext(MouseContext);
 
   const handleClick = (event: any) => {
     event.preventDefault();
@@ -76,7 +77,7 @@ interface MobileProps {
   label: string;
 }
 
-export function Mobile({ href, label }: MobileProps) {
+function Mobile({ href, label }: MobileProps) {
   const router = useRouter();
   const currentAnchor = useCurrentAnchor();
 
@@ -118,8 +119,7 @@ export function Mobile({ href, label }: MobileProps) {
   );
 }
 
-// eslint-disable-next-line import/no-anonymous-default-export
-export default {
+export const NavBarMenuItem = {
   Desktop,
   Mobile,
 };
