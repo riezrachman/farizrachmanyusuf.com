@@ -3,6 +3,7 @@ import { useCollection } from "react-firebase-hooks/firestore";
 import { collection } from "firebase/firestore";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectCards } from "swiper";
+import clsx from "clsx";
 
 import { ExternalLink } from "react-feather";
 
@@ -15,14 +16,18 @@ import { Work as WorkType } from "@/types";
 
 interface WorkItemProps {
   work: WorkType;
+  useSwiper?: boolean;
 }
 
-function WorkItem({ work }: WorkItemProps) {
+function WorkItem({ work, useSwiper = false }: WorkItemProps) {
   const { cursorChangeHandler } = useContext(MouseContext);
 
   return (
     <div
-      className="flex flex-col overflow-hidden rounded-lg shadow-lg lg:w-72 h-[500px] my-8"
+      className={clsx(
+        "flex flex-col overflow-hidden rounded-lg lg:w-72 h-[500px]",
+        useSwiper ? "rounded-lg my-8" : "border border-zinc-400"
+      )}
       onMouseEnter={() => cursorChangeHandler("hovered")}
       onMouseLeave={() => cursorChangeHandler("")}
     >
@@ -60,7 +65,11 @@ function WorkItem({ work }: WorkItemProps) {
   );
 }
 
-export function Work() {
+interface WorkProps {
+  withTab?: boolean;
+}
+
+export function Work({ withTab }: WorkProps) {
   const windowWidth = useWindowSize()?.width ?? 0;
 
   const [snapshot] = useCollection(collection(Firebase.firestore, "works"), {
@@ -76,57 +85,76 @@ export function Work() {
         What I&apos;ve Contributed
       </div>
       {(snapshot?.docs.length ?? 0) > 0 ? (
-        <div className="overflow-hidden">
-          <Swiper
-            className="hidden lg:block"
-            spaceBetween={windowWidth < 960 ? 20 : 40}
-            centeredSlides
-            loop
-            slidesPerView={"auto"}
-            loopedSlides={snapshot?.docs.length}
-            mousewheel={{ forceToAxis: true }}
-            autoplay={{ delay: 2500, disableOnInteraction: false }}
-            speed={windowWidth * 10}
-            modules={[Autoplay]}
-          >
+        withTab ? (
+          <div className="overflow-hidden">
+            <Swiper
+              className="hidden lg:block"
+              spaceBetween={windowWidth < 960 ? 20 : 40}
+              centeredSlides
+              loop
+              slidesPerView={"auto"}
+              loopedSlides={snapshot?.docs.length}
+              mousewheel={{ forceToAxis: true }}
+              autoplay={{ delay: 2500, disableOnInteraction: false }}
+              speed={windowWidth * 10}
+              modules={[Autoplay]}
+            >
+              {snapshot?.docs.map((doc) => (
+                <SwiperSlide
+                  key={doc.id}
+                  className="!w-72 transition ease-in-out hover:-translate-y-4 duration-300"
+                >
+                  <WorkItem
+                    work={{
+                      name: doc.data().name,
+                      description: doc.data().description,
+                      associate: doc.data().associate,
+                      image: doc.data().image,
+                      url: doc.data().url,
+                    }}
+                    useSwiper={true}
+                  />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+            <Swiper
+              className="block lg:hidden w-72"
+              effect="cards"
+              loop
+              modules={[EffectCards]}
+            >
+              {snapshot?.docs.map((doc) => (
+                <SwiperSlide key={doc.id} className="!w-72">
+                  <WorkItem
+                    work={{
+                      name: doc.data().name,
+                      description: doc.data().description,
+                      associate: doc.data().associate,
+                      image: doc.data().image,
+                      url: doc.data().url,
+                    }}
+                    useSwiper={true}
+                  />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
+        ) : (
+          <div className="flex flex-col gap-4">
             {snapshot?.docs.map((doc) => (
-              <SwiperSlide
+              <WorkItem
                 key={doc.id}
-                className="!w-72 transition ease-in-out hover:-translate-y-4 duration-300"
-              >
-                <WorkItem
-                  work={{
-                    name: doc.data().name,
-                    description: doc.data().description,
-                    associate: doc.data().associate,
-                    image: doc.data().image,
-                    url: doc.data().url,
-                  }}
-                />
-              </SwiperSlide>
+                work={{
+                  name: doc.data().name,
+                  description: doc.data().description,
+                  associate: doc.data().associate,
+                  image: doc.data().image,
+                  url: doc.data().url,
+                }}
+              />
             ))}
-          </Swiper>
-          <Swiper
-            className="block lg:hidden w-72"
-            effect="cards"
-            loop
-            modules={[EffectCards]}
-          >
-            {snapshot?.docs.map((doc) => (
-              <SwiperSlide key={doc.id} className="!w-72">
-                <WorkItem
-                  work={{
-                    name: doc.data().name,
-                    description: doc.data().description,
-                    associate: doc.data().associate,
-                    image: doc.data().image,
-                    url: doc.data().url,
-                  }}
-                />
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        </div>
+          </div>
+        )
       ) : (
         <Alert type="warning" label="This section hasn't been uploaded yet." />
       )}
