@@ -6,26 +6,10 @@ import React from "react";
 import { GitHub, Instagram, Linkedin, Twitter } from "react-feather";
 
 function Left() {
-  const [isBottom, setIsBottom] = React.useState(false);
   const { cursorChangeHandler } = React.useContext(MouseContext);
 
-  const scroll = useScrollListener();
-
-  React.useEffect(() => {
-    if (!isBottom && window.scrollY > 1700) {
-      setIsBottom(true);
-    } else if (isBottom && window.scrollY <= 1700) {
-      setIsBottom(false);
-    }
-  }, [scroll.y, isBottom]);
-
   return (
-    <div
-      className={clsx(
-        "w-[40px] fixed bottom-0 left-[40px] right-auto z-10 hidden lg:block",
-        isBottom ? "!hidden" : ""
-      )}
-    >
+    <div className="w-[40px] fixed bottom-0 left-[40px] right-auto z-10 hidden xl:block">
       <ul className="flex flex-col items-center list-none after:content-[''] after:w-[1px] after:h-[90px] after:my-0 after:mx-auto after:bg-zinc-900">
         <li
           className="m-4"
@@ -85,26 +69,10 @@ function Left() {
 }
 
 function Right() {
-  const [isBottom, setIsBottom] = React.useState(false);
   const { cursorChangeHandler } = React.useContext(MouseContext);
 
-  const scroll = useScrollListener();
-
-  React.useEffect(() => {
-    if (!isBottom && window.scrollY > 1700) {
-      setIsBottom(true);
-    } else if (isBottom && window.scrollY <= 1700) {
-      setIsBottom(false);
-    }
-  }, [scroll.y, isBottom]);
-
   return (
-    <div
-      className={clsx(
-        "w-[40px] fixed bottom-0 left-auto right-[40px] z-10 hidden lg:block",
-        isBottom ? "!hidden" : ""
-      )}
-    >
+    <div className="w-[40px] fixed bottom-0 left-auto right-[40px] z-10 hidden xl:block">
       <ul className="flex flex-col items-center list-none after:content-[''] after:w-[1px] after:h-[90px] after:my-0 after:mx-auto after:bg-zinc-900">
         <li
           className="m-8 mb-32 rotate-90"
