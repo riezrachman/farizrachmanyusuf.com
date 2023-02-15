@@ -12,8 +12,8 @@ export default function Home() {
     <Layout>
       <Introduction />
       <About />
-      <Experience />
-      <Work />
+      <Experience withTab={true} />
+      <Work withTab={true} />
       <Contact />
     </Layout>
   );
